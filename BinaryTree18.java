@@ -74,9 +74,9 @@ public class BinaryTree18 {
         }
     }
 
-    Node18  GetSuccessor(Node18  del) {
-        Node18  successor = del.right;
-        Node18  successorParent = del;
+    Node18 GetSuccessor(Node18  del) {
+        Node18 successor = del.right;
+        Node18 successorParent = del;
 
         while (successor.left != null) {
             successorParent = successor;
@@ -165,4 +165,58 @@ public class BinaryTree18 {
             }
         }
     }
+    // jawaban tugas nomer 1
+    public Node18 addRekursif(Node18 current, Mahasiswa18 data) {
+        if (current == null) {
+            return new Node18(data);
+        }
+        if (data.ipk < current.mahasiswa.ipk) {
+            current.left = addRekursif(current.left, data);
+        } else {
+            current.right = addRekursif(current.right, data);
+        }
+        return current;
+    }
+
+    // jawaban tugas nomer 1
+    public void addRekursif(Mahasiswa18 data) {
+        root = addRekursif(root, data);
+    }
+
+    // jawaban tugas nomer 2
+    public Mahasiswa18 cariMinIPK() {
+        if (isEmpty()) return null;
+        Node18 current = root;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current.mahasiswa;
+    }
+
+    // jawaban tugas nomer 2
+    public Mahasiswa18 cariMaxIPK() {
+        if (isEmpty()) return null;
+        Node18 current = root;
+        while (current.right != null) {
+            current = current.right;
+        }
+        return current.mahasiswa;
+    }
+
+    // jawaban tugas nomer 3
+    public void tampilMahasiswaIPKdiAtas(Node18 node, double ipkBatas) {
+        if (node != null) {
+            tampilMahasiswaIPKdiAtas(node.left, ipkBatas);
+            if (node.mahasiswa.ipk > ipkBatas) {
+                node.mahasiswa.tampilInformasi();
+            }
+            tampilMahasiswaIPKdiAtas(node.right, ipkBatas);
+        }
+    }
+
+    // jawaban tugas nomer 3
+    public void tampilMahasiswaIPKdiAtas(double ipkBatas) {
+        tampilMahasiswaIPKdiAtas(root, ipkBatas);
+    }
+    
 }
