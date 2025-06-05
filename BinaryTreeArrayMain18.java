@@ -13,8 +13,14 @@ public class BinaryTreeArrayMain18 {
 
         Mahasiswa18[] dataMahasiswas = {mhs1, mhs2, mhs3, mhs4, mhs5, mhs6, mhs7, null, null, null};
         int idxLast = 6; 
+
         bta.populateData(dataMahasiswas, idxLast);
+
         System.out.println("\nInorder Traversal Mahasiswa: ");
         bta.traverseInOrder(0);
+
+        // jawaban tugas nomer 4 
+        System.out.println("\nPreOrder Traversal Mahasiswa:");
+        bta.traversePreOrder(0);
     }
 }
